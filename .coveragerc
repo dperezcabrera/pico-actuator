@@ -1,0 +1,18 @@
+[run]
+branch = True
+source =
+    pico_actuator
+omit =
+    */_version.py
+
+[paths]
+pico_actuator =
+    src/pico_actuator
+    .tox/*/lib/*/site-packages/pico_actuator
+    .tox/*/site-packages/pico_actuator
+    */site-packages/pico_actuator
+
+[report]
+show_missing = True
+omit =
+    */_version.py
