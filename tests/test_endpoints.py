@@ -82,7 +82,7 @@ def test_enabled_false_disables_every_endpoint():
     from pico_ioc import DictSource, configuration
     from starlette.testclient import TestClient
 
-    cfg = configuration(DictSource({"actuator": {"enabled": False}}))
+    cfg = configuration(DictSource({"fastapi": {"title": "t"}, "actuator": {"enabled": False}}))
     container = init(modules=["pico_fastapi", "pico_actuator"], config=cfg)
     with TestClient(container.get(FastAPI)) as c:
         for path in ("/health", "/health/live", "/health/ready", "/info", "/metrics"):
