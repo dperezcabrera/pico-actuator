@@ -1,0 +1,10 @@
+fastapi:
+  title: pico-actuator demo
+  version: "0.1.0"
+
+actuator:
+  enabled: true
+  show_components: true
+  info:
+    app: demo-service
+    build: "2026.06"
