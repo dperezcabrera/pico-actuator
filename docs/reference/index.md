@@ -13,6 +13,7 @@ Complete reference for pico-actuator's public API.
 | `GET /actuator/health/ready` | `ActuatorController.readiness` | `200` UP / `503` DOWN |
 | `GET /actuator/info` | `ActuatorController.info` | `200` |
 | `GET /actuator/metrics` | `ActuatorController.metrics` | `200` (OpenMetrics or text 0.0.4 per `Accept`), `501` without the `metrics` extra |
+| `POST /actuator/refresh` | `ActuatorController.refresh` | `200` with `{"changed": [prefixes]}`; components subscribed to `ConfigChanged` re-read their config |
 
 ### Protocols
 

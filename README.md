@@ -23,6 +23,7 @@ Auto-discovered by [pico-boot](https://github.com/dperezcabrera/pico-boot) — i
 | `GET /actuator/health/ready` | Readiness — aggregate of all health indicators |
 | `GET /actuator/info` | Static config + dynamic contributors |
 | `GET /actuator/metrics` | Prometheus default registry (needs the `metrics` extra) |
+| `POST /actuator/refresh` | Re-reads config sources, publishes `ConfigChanged` (Spring Cloud style) |
 
 ## Install
 

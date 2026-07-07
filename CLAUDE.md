@@ -10,7 +10,7 @@ pico-actuator serves Spring Boot-style `/actuator/*` endpoints over pico-fastapi
 
 ## Key Reminders
 
-- pico-ioc dependency: `>= 2.2.0`; pico-fastapi: `>= 0.2.0`
+- pico-ioc dependency: `>= 2.3.0` (refresh_config); pico-fastapi: `>= 0.2.0`
 - **NEVER change `version_scheme`** in pyproject.toml. It MUST remain `"post-release"`. Changing it to `"guess-next-dev"` causes `.dev0` versions to leak to PyPI.
 - requires-python >= 3.11
 - Commit messages: one line only

@@ -9,7 +9,8 @@ pico-fastapi uses for ``List[FastApiConfigurer]``.
 
 from typing import List
 
-from pico_fastapi import controller, get
+from pico_fastapi import controller, get, post
+from pico_ioc import PicoContainer
 from starlette.requests import Request
 from starlette.responses import Response
 
@@ -28,10 +29,12 @@ class ActuatorController:
         settings: ActuatorSettings,
         indicators: List[HealthIndicator],
         contributors: List[InfoContributor],
+        container: PicoContainer,
     ):
         self.settings = settings
         self.indicators = indicators
         self.contributors = contributors
+        self.container = container
 
     async def _gather(self):
         return await gather(self.indicators, timeout=self.settings.check_timeout_seconds)
@@ -72,6 +75,17 @@ class ActuatorController:
         for c in self.contributors:
             data.update(c.contribute())
         return data
+
+    @post("/refresh")
+    async def refresh(self):
+        """Re-read config sources; report the changed top-level prefixes.
+
+        Mirror of Spring Cloud's ``POST /actuator/refresh``: components
+        subscribed to ``ConfigChanged`` re-read their config.
+        """
+        if not self.settings.enabled:
+            return _DISABLED
+        return {"changed": sorted(self.container.refresh_config())}
 
     @get("/metrics")
     async def metrics(self, request: Request):

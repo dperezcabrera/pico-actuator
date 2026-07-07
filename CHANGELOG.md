@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `POST /actuator/refresh` (Spring Cloud style): re-reads the tree config
+  sources via `container.refresh_config()` and answers
+  `{"changed": [prefixes]}`. Components subscribed to `ConfigChanged` re-read
+  their config. Requires pico-ioc >= 2.3.0 (dependency bumped).
+
 ## [0.1.0] - 2026-07-02
 
 ### Added

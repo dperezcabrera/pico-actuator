@@ -87,3 +87,21 @@ def test_enabled_false_disables_every_endpoint():
     with TestClient(container.get(FastAPI)) as c:
         for path in ("/health", "/health/live", "/health/ready", "/info", "/metrics"):
             assert c.get(f"/actuator{path}").status_code == 404, path
+        assert c.post("/actuator/refresh").status_code == 404
+
+
+def test_refresh_reports_changed_prefixes():
+    from fastapi import FastAPI
+    from pico_boot import init
+    from pico_ioc import DictSource, configuration
+    from starlette.testclient import TestClient
+
+    data = {"fastapi": {"title": "t"}, "app": {"greeting": "hola"}}
+    cfg = configuration(DictSource(data))
+    container = init(modules=["pico_fastapi", "pico_actuator"], config=cfg)
+    with TestClient(container.get(FastAPI)) as c:
+        assert c.post("/actuator/refresh").json() == {"changed": []}
+        data["app"]["greeting"] = "hello"
+        r = c.post("/actuator/refresh")
+        assert r.status_code == 200
+        assert r.json() == {"changed": ["app"]}
