@@ -1,4 +1,4 @@
-# 📦 pico-actuator
+# pico-actuator
 
 [![PyPI](https://img.shields.io/pypi/v/pico-actuator.svg)](https://pypi.org/project/pico-actuator/)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/dperezcabrera/pico-actuator)
