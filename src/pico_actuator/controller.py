@@ -22,6 +22,14 @@ from .health import UP, gather
 _DISABLED = ({"detail": "Not Found"}, 404)
 
 
+def _allow_anonymous(fn):
+    """Structural contract with pico-client-auth: probes must answer without
+    credentials (kubelet cannot send JWTs). Only the health trio — info,
+    metrics and refresh stay subject to auth when a middleware is active."""
+    fn._pico_allow_anonymous = True
+    return fn
+
+
 @controller(prefix="/actuator", tags=["actuator"])
 class ActuatorController:
     def __init__(
@@ -39,6 +47,7 @@ class ActuatorController:
     async def _gather(self):
         return await gather(self.indicators, timeout=self.settings.check_timeout_seconds)
 
+    @_allow_anonymous
     @get("/health")
     async def health(self):
         """Full health: overall status plus per-component detail."""
@@ -51,6 +60,7 @@ class ActuatorController:
         # (content, status) tuple — pico-fastapi normalizes this to a JSONResponse.
         return body, 200 if overall == UP else 503
 
+    @_allow_anonymous
     @get("/health/live")
     async def liveness(self):
         """Liveness: is the process responding at all? Cheap, touches no deps."""
@@ -58,6 +68,7 @@ class ActuatorController:
             return _DISABLED
         return {"status": UP}
 
+    @_allow_anonymous
     @get("/health/ready")
     async def readiness(self):
         """Readiness: are dependencies healthy? Aggregate of all indicators."""
