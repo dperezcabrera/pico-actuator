@@ -25,7 +25,7 @@ class RedisHealth:
 `check()` may be **sync or async** and return:
 
 - a mapping — `{"status": "UP", "free_mb": 4096}`; missing `status` defaults to `UP`
-- a plain truthy/falsy value — `True` → `UP`, `False` → `DOWN`
+- a plain truthy/falsy value — `True`  `UP`, `False`  `DOWN`
 
 ### Failure isolation
 
