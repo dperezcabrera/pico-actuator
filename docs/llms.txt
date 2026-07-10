@@ -1,0 +1,38 @@
+# pico-actuator
+
+> Spring Boot-style actuator for the Pico ecosystem: health and info endpoints over pico-fastapi.
+
+## Docs
+
+- [Home](https://dperezcabrera.github.io/pico-actuator/)
+- [Getting Started](https://dperezcabrera.github.io/pico-actuator/getting-started/)
+- [Learning Roadmap](https://dperezcabrera.github.io/pico-actuator/LEARN/)
+- [Example App](https://dperezcabrera.github.io/pico-actuator/examples/)
+- [index](https://dperezcabrera.github.io/pico-actuator/user-guide/)
+- [index](https://dperezcabrera.github.io/pico-actuator/how-to/)
+- [Kubernetes Probes](https://dperezcabrera.github.io/pico-actuator/how-to/kubernetes-probes/)
+- [Testing](https://dperezcabrera.github.io/pico-actuator/how-to/testing/)
+- [README](https://dperezcabrera.github.io/pico-actuator/cookbook/README/)
+- [Database Indicator](https://dperezcabrera.github.io/pico-actuator/cookbook/pattern-database-indicator/)
+- [Caching Checks](https://dperezcabrera.github.io/pico-actuator/cookbook/pattern-cached-check/)
+- [Securing Endpoints](https://dperezcabrera.github.io/pico-actuator/cookbook/pattern-securing-endpoints/)
+- [architecture](https://dperezcabrera.github.io/pico-actuator/architecture/)
+- [README](https://dperezcabrera.github.io/pico-actuator/adr/README/)
+- [ADR-001 Reuse Controllers](https://dperezcabrera.github.io/pico-actuator/adr/adr-0001-reuse-pico-fastapi-controllers/)
+- [ADR-002 Protocols over Registry](https://dperezcabrera.github.io/pico-actuator/adr/adr-0002-protocols-over-registry/)
+- [ADR-003 Failure Isolation](https://dperezcabrera.github.io/pico-actuator/adr/adr-0003-failure-isolation/)
+- [ADR-004 Dependency-Free Liveness](https://dperezcabrera.github.io/pico-actuator/adr/adr-0004-dependency-free-liveness/)
+- [ADR-005 Concurrent Checks](https://dperezcabrera.github.io/pico-actuator/adr/adr-0005-concurrent-checks-with-timeout/)
+- [index](https://dperezcabrera.github.io/pico-actuator/reference/)
+- [Configuration](https://dperezcabrera.github.io/pico-actuator/reference/config/)
+- [AI Coding Skills](https://dperezcabrera.github.io/pico-actuator/skills/)
+- [FAQ](https://dperezcabrera.github.io/pico-actuator/faq/)
+- [Troubleshooting](https://dperezcabrera.github.io/pico-actuator/troubleshooting/)
+- [Changelog](https://dperezcabrera.github.io/pico-actuator/CHANGELOG/)
+
+## For agents
+
+- [Full docs in one file](https://dperezcabrera.github.io/pico-actuator/llms-full.txt)
+- [AGENTS.md (conventions and boundaries)](https://raw.githubusercontent.com/dperezcabrera/pico-actuator/main/AGENTS.md)
+- [Flagship use case (whole ecosystem wired)](https://dperezcabrera.github.io/pico-boot/flagship/)
+- [PyPI](https://pypi.org/project/pico-actuator/)
