@@ -60,3 +60,5 @@ $ curl localhost:8000/actuator/health
 - [User Guide](user-guide/index.md) — indicators and contributors in depth
 - [How-To Guides](how-to/index.md) — Kubernetes probes, testing
 - [Reference](reference/index.md) — full public API
+
+**See it in context**: the [flagship use case](https://dperezcabrera.github.io/pico-boot/flagship/) wires this module into a full order platform together with the rest of the ecosystem.
