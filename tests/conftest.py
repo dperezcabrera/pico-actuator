@@ -1,8 +1,7 @@
 """Shared fixtures: a real container booted through pico-boot.
 
-Auto-discovery is disabled so the tests are isolated from whatever other
-pico plugins happen to be installed in the environment; pico-fastapi and
-pico-actuator are listed explicitly instead.
+Isolation from installed plugins comes from the pico-testing plugin;
+pico-fastapi and pico-actuator are listed explicitly instead.
 """
 
 import sys
@@ -12,12 +11,6 @@ from fastapi import FastAPI
 from pico_boot import init
 from pico_ioc import DictSource, component, configuration
 from starlette.testclient import TestClient
-
-
-@pytest.fixture(autouse=True)
-def _isolate_from_env_plugins(monkeypatch):
-    monkeypatch.setenv("PICO_BOOT_AUTO_PLUGINS", "false")
-
 
 CONFIG = configuration(
     DictSource(
