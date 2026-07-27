@@ -1,0 +1,45 @@
+# pico-actuator
+
+> Spring Boot-style actuator for the Pico ecosystem: health and info endpoints over pico-fastapi.
+
+Install: `pip install pico-actuator`. Import surface: `from pico_actuator import ...`.
+
+## Usage
+
+```python
+from pico_ioc import component
+from pico_actuator import HealthIndicator
+
+@component
+class DbHealth:  # satisfies HealthIndicator
+    name = "db"
+    def __init__(self, engine: Engine):
+        self.engine = engine
+    def check(self):
+        self.engine.connect().close()
+        return {"status": "UP"}
+```
+
+## Public API
+
+- `class ActuatorSettings` — Type-safe actuator settings, populated from the ``actuator`` prefix.
+- `class HealthIndicator(Protocol)` — A component contributing one entry to ``/actuator/health``.
+- `class InfoContributor(Protocol)` — A component contributing key/values to ``/actuator/info``.
+- `class ActuatorController`
+- `class PicoActuatorError(Exception)` — Base exception for all pico-actuator errors.
+
+## Docs
+
+- docs/CHANGELOG.md
+- docs/LEARN.md
+- docs/adr/ (6 pages)
+- docs/architecture.md
+- docs/cookbook/ (4 pages)
+- docs/examples.md
+- docs/faq.md
+- docs/getting-started.md
+- docs/how-to/ (3 pages)
+- docs/reference/ (2 pages)
+- docs/skills.md
+- docs/troubleshooting.md
+- docs/user-guide/ (1 pages)
